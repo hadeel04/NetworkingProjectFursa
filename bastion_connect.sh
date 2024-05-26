@@ -15,7 +15,6 @@ fi
 # Assign the first argument to the bastion_ip
 bastion_ip=$1
 
-
 # Check if the second argument exists
 if [ "$#" -gt 1 ]; then
     private_ip=$2
