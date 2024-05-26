@@ -23,9 +23,9 @@ if [ "$#" -gt 1 ]; then
     # Check if the third argument exists
     if [ "$#" -gt 2 ]; then
         command=$3
-        ssh  -o "StrictHostKeyChecking=no" -A -i "${KEY_PATH}" ubuntu@"${bastion_ip}" ssh -i hadeel_key.pem ubuntu@"${private_ip}" "${command}"
+        ssh  -o "StrictHostKeyChecking=no" -A -i "${KEY_PATH}" ubuntu@"${bastion_ip}" ssh -i key.pem ubuntu@"${private_ip}" "${command}"
     else
-        ssh -t -o "StrictHostKeyChecking=no" -A -i "${KEY_PATH}" ubuntu@"${bastion_ip}" ssh -t -o "StrictHostKeyChecking=no" -i hadeel_key.pem ubuntu@"${private_ip}"
+        ssh -t -o "StrictHostKeyChecking=no" -A -i "${KEY_PATH}" ubuntu@"${bastion_ip}" ssh -t -o "StrictHostKeyChecking=no" -i key.pem ubuntu@"${private_ip}"
     fi
 else
     ssh -t -o "StrictHostKeyChecking=no" -i "${KEY_PATH}" ubuntu@"${bastion_ip}"
