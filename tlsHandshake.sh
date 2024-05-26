@@ -21,7 +21,7 @@ echo "Step 2: Received Server Hello..."
 SERVER_HELLO=$(echo "$CLIENT_HELLO" | jq -r '.')
 SESSION_ID=$(echo "$SERVER_HELLO" | jq -r '.sessionID')
 SERVER_CERT=$(echo "$SERVER_HELLO" | jq -r '.serverCert')
-echo "$SERVER_CERT" > server_cert.pem
+echo "$SERVER_CERT" > cert.pem
 
 
 # Step 3: Server Certificate Verification
