@@ -39,7 +39,7 @@ rm cert-ca-aws.pem
 # Step 4: Client-Server master-key exchange
 echo "Step 4: Generating and sending master key..."
 MASTER_KEY=$(openssl rand -base64 32)
-ENCRYPTED_MASTER_KEY=$(openssl smime -encrypt -aes-256-cbc -in <(echo "$MASTER_KEY") -outform DER server_cert.pem | base64 -w 0)
+ENCRYPTED_MASTER_KEY=$(openssl smime -encrypt -aes-256-cbc -in <(echo "$MASTER_KEY") -outform DER cert.pem | base64 -w 0)
 
 
 #Step 5: Server verification message
