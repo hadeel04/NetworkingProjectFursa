@@ -28,10 +28,10 @@ echo "$SERVER_CERT" > server_cert.pem
 echo "Step 3: Verifying Server Certificate..."
 wget https://alonitac.github.io/DevOpsTheHardWay/networking_project/cert-ca-aws.pem
 if [ $? -ne 0 ]; then
-    echo "couldnt get the cer."
+    echo "couldnt get the certificate."
     exit 5
 fi
-openssl verify -CAfile cert-ca-aws.pem server_cert.pem > /dev/null
+openssl verify -CAfile cert-ca-aws.pem cert.pem
 if [ $? -ne 0 ]; then
     echo "Server Certificate is invalid."
     exit 5
