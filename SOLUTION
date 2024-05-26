@@ -1,26 +1,52 @@
 Local DNS Server IP
 -------------------
-<ip-here>
+127.0.0.53
 
 
 
 Default gateway IP
 -------------------
-<ip-here>
+10.0.0.1
 
 
 
 DHCP IP allocation sys-logs
 -------------------
-<logs-here>
+1.Discover:
+2024-05-24T10:54:37.768285+00:00 ip-10-0-0-116 dhcpcd[436]: enX0: soliciting a DHCP lease
+
+2.Offer:
+2024-05-24T10:54:37.768289+00:00 ip-10-0-0-116 dhcpcd[436]: enX0: offered 10.0.0.116 from 10.0.0.1
+
+3.Request:
+2024-05-24T10:54:37.768292+00:00 ip-10-0-0-116 dhcpcd[436]: enX0: leased 10.0.0.116 for 3600 seconds
+
+Acknowledge:
+2024-05-24T10:54:37.768298+00:00 ip-10-0-0-116 dhcpcd[436]: enX0: adding route to 10.0.0.0/24
+2024-05-24T10:54:37.768302+00:00 ip-10-0-0-116 dhcpcd[436]: enX0: adding default route via 10.0.0.1
+
 
 
 
 Public to private num of hops
 -------------------
-<answer-here>
+1 hop
+A single hop suggests that the communication between the public and private instances doesn't need to traverse any
+external routers or network devices.Instead, the packets likely travel directly within the VPC infrastructure.
 
 
 DNS queries from the private instance
 -------------------
-<answer-here>
+Yes,
+Since the public instance has internet access, it can communicate with public DNS servers on the internet and
+resolve DNS addresses of public websites.
+The public and private instances are in the same VPC, which means they can communicate with each other over
+the private network within the VPC, even though the private instance doesn't have direct internet access.
+When I connect to the private instance through the public instance, I essentially establish a network path
+between the two instances within the VPC.
+Once connected to the private instance via the public instance, I can configure the private instance to use
+the public instance as a DNS resolver. This means that when the private instance needs to resolve a public DNS address,
+it will send the DNS query to the public instance, which can then forward the query to public DNS servers on
+the internet and relay the response back to the private instance.
+In this setup, the public instance acts as a gateway or intermediary for DNS resolution,
+allowing the private instance to leverage the public instance's internet access and connectivity to public DNS servers.
