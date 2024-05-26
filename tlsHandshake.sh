@@ -33,6 +33,8 @@ if [ $? -ne 0 ]; then
     exit 5
 fi
 
+rm cert-ca-aws.pem
+
 
 # Step 4: Client-Server master-key exchange
 echo "Step 4: Generating and sending master key..."
